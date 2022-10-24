@@ -2,6 +2,7 @@
 using Certificate_Creator.Models;
 using Certificate_Creator.Service;
 using Certificate_Creator.Services;
+using Certificate_Creator.UI;
 
 namespace Certificate_Creator.Services
 {
@@ -9,7 +10,7 @@ namespace Certificate_Creator.Services
     {
 
         /// <summary>
-        /// 
+        /// Method creating root certificate
         /// </summary>
         public void CreateRoot()
         {
@@ -20,15 +21,11 @@ namespace Certificate_Creator.Services
 
             if (!checker)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Something wrong, try change data\n\n");
-                Console.ResetColor();
+                UI.UI.WrongCertificate();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Success, don't forget to save your password\n\n");
-                Console.ResetColor();
+                UI.UI.SuccessCertificate();
             }
 
             Thread.Sleep(3000);
@@ -36,7 +33,8 @@ namespace Certificate_Creator.Services
 
 
         /// <summary>
-        /// 
+        /// Method creating subsidiary certificate. 
+        /// Before you try this method, you must have root certificate
         /// </summary>
         public void CreateDefault()
         {
@@ -49,21 +47,21 @@ namespace Certificate_Creator.Services
 
             if (!checker)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Something wrong, try change data\n\n");
-                Console.ResetColor();
+               UI.UI.WrongCertificate();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Success, don't forget to save your password\n\n");
-                Console.ResetColor();
+                UI.UI.SuccessCertificate();
             }
 
             Thread.Sleep(3000);
         }
 
 
+        /// <summary>
+        /// Just display all certificates
+        /// </summary>
+        /// <returns>certificates</returns>
         private CertificateExplorer Display()
         {
             int counter = 0;
@@ -77,6 +75,10 @@ namespace Certificate_Creator.Services
         }
 
 
+        /// <summary>
+        /// Creating model for future operations
+        /// </summary>
+        /// <returns>created model</returns>
         private CertificateDataModel CreateModelForRoot()
         {
             string pass = GeneratePassword();
@@ -103,6 +105,10 @@ namespace Certificate_Creator.Services
         }
 
 
+        /// <summary>
+        /// Creating model for future operations
+        /// </summary>
+        /// <returns>created model with root</returns>
         private CertificateDataModel CreateModelForDefault(CertificateExplorer certificateExplorer)
         {
             Console.Write("Select number of certificate: ");

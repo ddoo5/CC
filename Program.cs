@@ -12,9 +12,9 @@ Console.Title = "Certificate Creator - Console app";
 Console.Clear();
 Console.CursorVisible = false;
 
-//UI.Greeting();
+UI.Greeting();
 
-//Thread.Sleep(5000);
+Thread.Sleep(5000);
 
 while (true)
 {
@@ -51,7 +51,7 @@ while (true)
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"I caught exception: {a.Message}\n" +
             $"Here's help link: {a.HelpLink}\n");
-        Thread.Sleep(6000);
+        Thread.Sleep(6500);
         Console.Clear();
     }
 

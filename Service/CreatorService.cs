@@ -18,7 +18,7 @@ namespace Certificate_Creator.Services
     public class CreatorService : ICreatorService
     {
         /// <summary>
-        /// This method creating under root or default certificate
+        /// This method creating under root or subsidiary certificate
         /// </summary>
         /// <param name="model">Certificate data</param>
         /// <returns>'true' if successfully</returns>
@@ -57,9 +57,9 @@ namespace Certificate_Creator.Services
             KeyUsage keyUsage = new KeyUsage(model.CertificateName.EndsWith("CA") ? 182 : 176);
             certificateGen.AddExtension(X509Extensions.KeyUsage, true, keyUsage);
             ArrayList keyPruposes = new();
-            keyPruposes.Add(KeyPurposeID.IdKPServerAuth); //server
+            //keyPruposes.Add(KeyPurposeID.IdKPServerAuth); //server
             keyPruposes.Add(KeyPurposeID.IdKPCodeSigning); //code sign
-            keyPruposes.Add(KeyPurposeID.IdKPEmailProtection);  //email
+            //keyPruposes.Add(KeyPurposeID.IdKPEmailProtection);  //email
             certificateGen.AddExtension(X509Extensions.ExtendedKeyUsage, true, new ExtendedKeyUsage(keyPruposes));
             if (model.CertificateName.EndsWith("CA"))
                 certificateGen.AddExtension(X509Extensions.BasicConstraints, true, new BasicConstraints(true));
