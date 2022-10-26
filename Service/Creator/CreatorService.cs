@@ -31,7 +31,7 @@ namespace Certificate_Creator.Services
             //generating pair keys
             SecureRandom secRnd = new();
             RsaKeyPairGenerator keyGen = new();
-            RsaKeyGenerationParameters param = new RsaKeyGenerationParameters(new Org.BouncyCastle.Math.BigInteger("10001", 16), new SecureRandom(), 512, 25); //todo: change key size
+            RsaKeyGenerationParameters param = new RsaKeyGenerationParameters(new Org.BouncyCastle.Math.BigInteger("10001", 16), new SecureRandom(), 1024, 8);
             keyGen.Init(param);
             AsymmetricCipherKeyPair keyPair = keyGen.GenerateKeyPair();
 
@@ -120,7 +120,7 @@ namespace Certificate_Creator.Services
             //generating pair keys
             SecureRandom secRnd = new();
             RsaKeyPairGenerator keyGen = new();
-            RsaKeyGenerationParameters param = new RsaKeyGenerationParameters(new Org.BouncyCastle.Math.BigInteger("10001", 16), new SecureRandom(), 512, 25); //todo: change key size
+            RsaKeyGenerationParameters param = new RsaKeyGenerationParameters(new Org.BouncyCastle.Math.BigInteger("10001", 16), new SecureRandom(), 1024, 8);
             keyGen.Init(param);
             AsymmetricCipherKeyPair keyPair = keyGen.GenerateKeyPair();
 
